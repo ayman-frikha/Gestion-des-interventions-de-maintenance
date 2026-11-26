@@ -51,5 +51,7 @@ typedef struct PlanPreventif {
     struct PlanPreventif *suivant;
 } PlanPreventif;
 noeudeq* ajouterEquipement(noeudeq *noued, Equipement eq);
+Equipement *rechercherEquipement(noeudeq *tete, int id);
+void afficherParc(const noeudeq *tete);
 
 #endif
