@@ -12,8 +12,11 @@ typedef struct Equipement {
     EtatEquipement etat;
     Date miseEnService, derniereIntervention;
     int nbPannes;
-    struct Equipement *suivant;
 } Equipement;
+typedef struct noeudequipement{
+    Equipement data;
+    struct noeudequipement *suivant;
+}noeudeq;
 typedef struct Technicien {
     int id;
     char nom[50], specialite[30];
@@ -47,5 +50,6 @@ typedef struct PlanPreventif {
     Date derniere, prochaine;
     struct PlanPreventif *suivant;
 } PlanPreventif;
+noeudeq* ajouterEquipement(noeudeq *noued, Equipement eq);
 
 #endif
