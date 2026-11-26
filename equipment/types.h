@@ -55,6 +55,6 @@ Equipement creerEquipement(int id, const char *nom, const char *type,
                            EtatEquipement etat, Date miseEnService,
                            Date derniereIntervention, int nbPannes);
 noeudeq *ajouterEquipement(noeudeq *tete, Equipement eq);
-noeudeq *supprimerEquipement(noeudeq *tete, Equipement eq);
-char *etateq(EtatEquipement etat);
+noeudeq *supprimerEquipement(noeudeq *tete, int id);
+char *etateq(int etat);
 #endif
