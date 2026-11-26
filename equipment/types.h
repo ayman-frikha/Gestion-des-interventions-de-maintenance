@@ -50,6 +50,11 @@ typedef struct PlanPreventif {
     Date derniere, prochaine;
     struct PlanPreventif *suivant;
 } PlanPreventif;
-noeudeq* ajouterEquipement(noeudeq *noued, Equipement eq);
-
+Equipement creerEquipement(int id, const char *nom, const char *type,
+                           const char *localisation, int criticite,
+                           EtatEquipement etat, Date miseEnService,
+                           Date derniereIntervention, int nbPannes);
+noeudeq *ajouterEquipement(noeudeq *tete, Equipement eq);
+noeudeq *supprimerEquipement(noeudeq *tete, Equipement eq);
+char *etateq(EtatEquipement etat);
 #endif
