@@ -50,6 +50,6 @@ typedef struct PlanPreventif {
     Date derniere, prochaine;
     struct PlanPreventif *suivant;
 } PlanPreventif;
-
+noeudeq* ajouterEquipement(noeudeq *noued, Equipement eq);
 
 #endif
