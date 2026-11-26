@@ -29,8 +29,8 @@ Equipement creerEquipement(
     return eq;
 }
 
-char *etateq(EtatEquipement etat) {
-    switch (etat) {
+char *etateq(Equipement eq) {
+    switch (eq.etat) {
         case EN_SERVICE: return "En service";
         case EN_PANNE: return "En panne";
         case EN_MAINTENANCE: return "En maintenance";
