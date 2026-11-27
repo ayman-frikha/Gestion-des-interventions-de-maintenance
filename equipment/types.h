@@ -32,10 +32,15 @@ typedef struct Demande {
     Date dateDemande, echeance;            
     int nbSignalements;                    
     StatutDemande statut;
-    struct Demande *suivant;
 } Demande;
-typedef struct { Demande *tete, *queue; int taille; } File; 
+typedef struct noeuddemande {
+    Demande *demande;
+    struct noeuddemande *suivant;
+} noeuddemande;
+
+typedef struct { noeuddemande *tete, *queue; int taille; } File; 
 typedef struct { File niveaux[4]; } FilePriorite;
+
 typedef struct Operation {
     int id, idDemande, idEquipement, idTechnicien;
     Date debut, fin;
