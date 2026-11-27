@@ -60,5 +60,6 @@ Equipement *rechercherEquipement(noeudeq *noeud, int id);
 void afficherParc(noeudeq *noeud);
 void afficherDetailEquipement(Equipement *eq);
 char *etateq(int etat);
+bool changeretat(noeudeq* noeud, int id,EtatEquipement etat);
 
 #endif

@@ -2,6 +2,7 @@
 #include "types.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 Equipement creerEquipement(
     int id,
@@ -112,7 +113,7 @@ void afficherDetailEquipement(Equipement *eq) {
     printf("  Nom                  : %s\n", eq->nom);
     printf("  Type                 : %s\n", eq->type);
     printf("  Localisation         : %s\n", eq->localisation);
-    printf("  Criticite            : %d / 3\n", eq->criticite);
+    printf("  Criticite            : %d / 5\n", eq->criticite);
     printf("  Etat                 : %s\n", etateq(eq->etat));
     printf("  Nombre de pannes     : %d\n", eq->nbPannes);
     printf("  Mise en service      : %d/%d/%d\n",
@@ -123,4 +124,21 @@ void afficherDetailEquipement(Equipement *eq) {
         printf("  Derniere intervention: %d/%d/%d\n",
                eq->derniereIntervention.jour, eq->derniereIntervention.mois, eq->derniereIntervention.annee);
     }
+}
+
+bool changeretat(noeudeq* noeud, int id,EtatEquipement etat){
+    if (etat > 3 || etat < 0 ){
+        printf("Etat invalide\n");
+        return false;
+    } 
+    Equipement* pointeureq= rechercherEquipement(noeud,id);
+    if (pointeureq==NULL){
+        printf("Equipement introuvable\n");
+        return false;
+    }
+    pointeureq->etat=etat;
+    if (etat==1){
+        pointeureq->nbPannes+=1;
+    }
+    return true;
 }
