@@ -61,5 +61,8 @@ void afficherParc(noeudeq *noeud);
 void afficherDetailEquipement(Equipement *eq);
 char *etateq(int etat);
 bool changeretat(noeudeq* noeud, int id,EtatEquipement etat);
+void sauvegarderEquipements(noeudeq *noeud);
+#define FICHIER_EQUIPEMENTS "equipements.dat"
+noeudeq *chargerEquipements();
 
 #endif

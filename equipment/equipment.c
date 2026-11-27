@@ -142,3 +142,49 @@ bool changeretat(noeudeq* noeud, int id,EtatEquipement etat){
     }
     return true;
 }
+
+void sauvegarderEquipements(noeudeq *noeud) {
+    FILE* f = fopen(FICHIER_EQUIPEMENTS, "w");
+    if (f == NULL) {
+        printf("Erreur d'ouverture du fichier.\n");
+        return;
+    }
+
+    noeudeq* aux = noeud;
+    while (aux != NULL) {
+        Equipement eq = aux->data;
+        fprintf(f, "%d %s %s %s %d %d %d %d %d %d %d %d %d\n",
+                eq.id, eq.nom, eq.type, eq.localisation,
+                eq.criticite, eq.etat,
+                eq.miseEnService.jour, eq.miseEnService.mois, eq.miseEnService.annee,
+                eq.derniereIntervention.jour, eq.derniereIntervention.mois, eq.derniereIntervention.annee,
+                eq.nbPannes);
+        aux = aux->suivant;
+    }
+
+    fclose(f);
+
+
+}
+noeudeq *chargerEquipements() {
+    FILE* f=fopen(FICHIER_EQUIPEMENTS, "r");
+    
+    if (f == NULL) {
+        return NULL; 
+    }
+    
+    noeudeq* tete=NULL;
+    Equipement eq;
+    while (fscanf(f, "%d %s %s %s %d %d %d %d %d %d %d %d %d\n",
+        &eq.id , eq.nom, eq.type, eq.localisation,
+        &eq.criticite, &eq.etat,
+        &eq.miseEnService.jour, &eq.miseEnService.mois, &eq.miseEnService.annee,
+        &eq.derniereIntervention.jour, &eq.derniereIntervention.mois, &eq.derniereIntervention.annee,
+        &eq.nbPannes) == 13) {
+        tete = ajouterEquipement(tete, eq);
+        }
+
+    fclose(f);
+    return tete;
+
+}
