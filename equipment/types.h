@@ -21,8 +21,11 @@ typedef struct Technicien {
     int id;
     char nom[50], specialite[30];
     int charge;                            
-    struct Technicien *suivant;
 } Technicien;
+typedef struct noeudtechnicien{
+    Technicien info;
+    struct noeudtechnicien *suivant;
+}noeudtech;
 typedef struct Demande {
     int id, idEquipement;
     char description[200];
